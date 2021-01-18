@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Name:</strong>
+  <%= @playlist.name %>
+</p>
+
 <div class="row">
-  <% @songs.each do |song| %>
+  <% @playlist.songs.each do |song| %>
     <div class="col-md-4">
       <h4><%= link_to song.name, song %></h4>
       <p><%= song.artist %></p>
@@ -10,4 +15,6 @@
   <% end %>
 </div>
 
-<%= link_to 'New Song', new_song_path %>
+<br>
+
+<%= link_to 'New Playlist', new_playlist_path %>

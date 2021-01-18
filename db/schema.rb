@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_203243) do
+ActiveRecord::Schema.define(version: 2021_01_18_130419) do
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
@@ -18,6 +24,9 @@ ActiveRecord::Schema.define(version: 2021_01_16_203243) do
     t.string "attachement"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "playlist_id"
+    t.index ["playlist_id"], name: "index_songs_on_playlist_id"
   end
 
+  add_foreign_key "songs", "playlists"
 end
